@@ -40,19 +40,17 @@
       border-bottom: 2px outset #000;
       box-shadow: 0 2px 0 #000;
       align-items: center;
-      justify-content: center;
       gap: 24px;
     }
 
     #topbar img {
       width: 40px;
       height: 40px;
-      margin-right: 12px;
     }
 
     #topbar .name {
       font-size: 20px;
-      margin-right: auto;
+      margin-left: 12px;
     }
 
     #topbar .buttons {
@@ -104,28 +102,35 @@
 
     #homescreen {
       position: absolute;
-      top: 50%;
+      top: 25%;
       left: 50%;
-      transform: translate(-50%, -50%);
+      transform: translate(-50%, -25%);
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 48px;
-      z-index: 300;
+      gap: 24px;
+      z-index: 301;
       pointer-events: none;
     }
 
     #homescreen img {
-      width: 400px;
-      height: 400px;
-      z-index: 301;
+      width: 500px;
+      height: auto;
+      opacity: 1;
     }
 
     #homescreen h1 {
       margin: 0;
       color: white;
-      font-size: 140px;
+      font-size: 160px;
       opacity: 1;
-      z-index: 301;
+    }
+
+    #homescreen p {
+      color: white;
+      font-size: 28px;
+      max-width: 800px;
+      text-align: center;
     }
 
     button {
@@ -154,6 +159,7 @@
   <div id="homescreen">
     <img src="logo.png" alt="logo"/>
     <h1>pip chell</h1>
+    <p>welcome to my win98-style corner of the internet. explore tools, retro apps, and more.</p>
   </div>
 
   <script>
@@ -197,10 +203,10 @@
       if (win) {
         win.style.zIndex = 199;
         win.style.display = 'block';
-        win.style.left = 0;
-        win.style.top = 0;
+        win.style.left = '0';
+        win.style.top = document.querySelector('#topbar').offsetHeight + 'px';
         win.style.width = '100vw';
-        win.style.height = '100vh';
+        win.style.height = `calc(100vh - ${document.querySelector('#topbar').offsetHeight}px)`;
         win.style.transform = 'scale(1)';
         document.querySelector('#homescreen').style.display = 'none';
       }
