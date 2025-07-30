@@ -13,8 +13,11 @@
 * { box-sizing: border-box; text-transform: lowercase; }
 html, body {
   margin: 0; padding: 0;
+  height: 100%;
   background: #1c1c1c; color: white;
   font-family: 'win98', monospace;
+  display: flex;
+  flex-direction: column;
 }
 a { color: white; text-decoration: none; }
 #topbar {
@@ -32,6 +35,7 @@ a { color: white; text-decoration: none; }
   margin-left: 8px;
 }
 #main {
+  flex: 1;
   padding-top: 120px;
   max-width: 800px; margin: auto;
   text-align: center;
@@ -68,11 +72,12 @@ section p {
   padding: 4px 10px;
 }
 footer {
-  text-align: center; margin: 40px auto 20px;
-  font-size: 14px; color: #aaa;
-  position: relative; padding-bottom: 40px;
+  text-align: center;
+  margin: 40px auto 20px;
+  font-size: 14px;
+  color: #aaa;
+  padding-bottom: 40px;
 }
-#frank { position: fixed; bottom: 20px; right: 20px; width: 60px; cursor: pointer; }
 </style>
 </head>
 <body>
@@ -92,8 +97,9 @@ footer {
 
 <div id="main">
   <section id="home">
-    <h1>i'm pip chell</h1>
-    <p>welcome to my retro-inspired world — explore code, pixels, and personal projects through a 98-style lens.</p>
+    <img src="logo.png" alt="site logo" style="width: 100px; display: block; margin: 0 auto 20px;">
+    <h1>👋 hi, i'm pip chell</h1>
+    <p>welcome to my retro-inspired corner of the web. i build nostalgic apps, code in cozy corners, and have an obsession with old-school tech aesthetics.</p>
   </section>
 
   <section id="about">
@@ -118,12 +124,11 @@ footer {
     <div class="social"><p>github</p><a href="https://github.com/yourprofile" target="_blank">github.com/yourprofile</a></div>
     <div class="social"><p>email</p><a href="mailto:pip@example.com">pip@example.com</a></div>
   </section>
-
-  <footer>
-    © 2025 pip chell — built with code, love, and old‑school vibes.
-    <img id="frank" src="frank.png" alt="frank icon" title="click for Frank simulator">
-  </footer>
 </div>
+
+<footer>
+  © 2025 pip chell — built with code, love, and old‑school vibes.
+</footer>
 
 <script>
   const links = document.querySelectorAll('.nav-links a');
@@ -144,10 +149,6 @@ footer {
 
   // Show home by default
   showSection('#home');
-
-  document.getElementById('frank').onclick = () => {
-    alert("bonafide frank simulator\nclick effect placeholder");
-  };
 </script>
 
 </body>
