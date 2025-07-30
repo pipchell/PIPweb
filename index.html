@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>win98 dark grid</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>win98 full grid</title>
   <style>
     @font-face {
       font-family: 'win98';
@@ -22,15 +22,23 @@
       font-family: 'win98', monospace;
       background-color: #1c1c1c;
       color: #f0f0f0;
-      overflow-x: hidden;
+      letter-spacing: 0.04em;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
     .grid {
+      flex: 1;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 24px;
       padding: 40px;
       animation: fadeIn 1s ease;
+      overflow-y: auto;
     }
 
     .window {
@@ -62,6 +70,7 @@
       font-weight: bold;
       border-bottom: 2px solid #111;
       margin: -20px -20px 16px -20px;
+      letter-spacing: 0.05em;
     }
 
     button {
@@ -74,6 +83,7 @@
       transition: all 0.2s ease;
       margin-top: 12px;
       width: fit-content;
+      letter-spacing: 0.06em;
     }
 
     button:hover {
@@ -96,7 +106,6 @@
       color: #ffffff;
     }
 
-    /* Make some windows bigger */
     .tall {
       grid-row: span 2;
     }
@@ -122,7 +131,8 @@
   <div class="grid">
     <div class="window">
       <div class="title">about</div>
-      <p>welcome to my win98 zone.<br>animated grid magic in the dark.</p>
+      <p>welcome to my win98 zone.<br>dark theme, pixel text, retro layout.</p>
+      <button>learn more</button>
     </div>
 
     <div class="window wide">
@@ -133,22 +143,25 @@
         <li><a href="#">screensaver</a></li>
         <li><a href="#">pixel painter</a></li>
       </ul>
+      <button>view all</button>
     </div>
 
     <div class="window">
       <div class="title">contact</div>
       <p>email: <a href="mailto:you@example.com">you@example.com</a></p>
-      <button onclick="alert('yo!')">say hi</button>
+      <button>say hi</button>
     </div>
 
     <div class="window tall">
       <div class="title">blog</div>
-      <p>cool things i'm working on:<br><br>– weird ui experiments<br>– retro css tricks<br>– web-to-screensaver ideas</p>
+      <p>cool things i'm working on:<br><br>– ui experiments<br>– retro css<br>– web tools<br>– scr setups</p>
+      <button>read blog</button>
     </div>
 
     <div class="window">
       <div class="title">gallery</div>
-      <p>pixel art, screenshots, and cursed wallpapers coming soon.</p>
+      <p>pixel art, screenshots, and wallpapers.</p>
+      <button>open gallery</button>
     </div>
 
     <div class="window">
@@ -158,17 +171,19 @@
         <li><a href="#">spotify</a></li>
         <li><a href="#">cloudflare</a></li>
       </ul>
+      <button>more links</button>
     </div>
 
     <div class="window">
       <div class="title">music</div>
-      <p>playlist selector or winamp embed could go here</p>
-      <button>play</button>
+      <p>playlist embed or custom player here</p>
+      <button>play music</button>
     </div>
 
     <div class="window">
-      <div class="title">cool facts</div>
-      <p>did you know? ctrl+alt+del was invented for debugging, not rage resets.</p>
+      <div class="title">facts</div>
+      <p>did you know?<br>ctrl+alt+del wasn’t for restarts originally.</p>
+      <button>more facts</button>
     </div>
   </div>
 </body>
