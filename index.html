@@ -36,23 +36,32 @@
       color: #fff;
       display: flex;
       padding: 8px 16px;
-      gap: 16px;
-      z-index: 100;
-      border-bottom: 2px solid #000;
+      z-index: 200;
+      border-bottom: 2px outset #000;
       box-shadow: 0 2px 0 #000;
       align-items: center;
+      justify-content: center;
+      gap: 16px;
     }
 
     #topbar img {
       width: 32px;
       height: 32px;
+      position: absolute;
+      left: 16px;
+    }
+
+    #topbar .name {
+      position: absolute;
+      left: 60px;
+      font-size: 18px;
     }
 
     #topbar button {
       background: #2a2a2a;
       border: 2px outset #666;
       color: white;
-      padding: 6px 10px;
+      padding: 6px 14px;
       font-family: 'win98';
       cursor: pointer;
     }
@@ -96,12 +105,14 @@
       display: flex;
       align-items: center;
       gap: 48px;
-      z-index: 1000;
+      z-index: 101;
+      pointer-events: none;
     }
 
     #homescreen img {
-      width: 280px;
-      height: 280px;
+      width: 320px;
+      height: 320px;
+      z-index: 150;
     }
 
     #homescreen h1 {
@@ -109,6 +120,7 @@
       color: white;
       font-size: 120px;
       opacity: 1;
+      z-index: 150;
     }
 
     button {
@@ -131,6 +143,7 @@
 <body>
   <div id="topbar">
     <img src="logo.png" alt="icon">
+    <span class="name">pip chell</span>
   </div>
   <div id="homescreen">
     <img src="logo.png" alt="logo"/>
@@ -147,18 +160,31 @@
     const placed = [];
 
     function doesOverlap(x, y, w, h) {
+      const homeRect = document.querySelector('#homescreen').getBoundingClientRect();
+      const buffer = 40;
+      const homeArea = {
+        x: homeRect.left - buffer,
+        y: homeRect.top - buffer,
+        w: homeRect.width + buffer * 2,
+        h: homeRect.height + buffer * 2
+      };
       return placed.some(pos => (
         x < pos.x + pos.w &&
         x + w > pos.x &&
         y < pos.y + pos.h &&
         y + h > pos.y
-      ));
+      )) || (
+        x < homeArea.x + homeArea.w &&
+        x + w > homeArea.x &&
+        y < homeArea.y + homeArea.h &&
+        y + h > homeArea.y
+      );
     }
 
     function openWindow(id) {
       const win = document.querySelector(`#win-${id}`);
       if (win) {
-        win.style.zIndex = 99;
+        win.style.zIndex = 199;
         win.style.left = 0;
         win.style.top = 0;
         win.style.width = '100vw';
@@ -187,7 +213,6 @@
         do {
           x = Math.floor(Math.random() * (screenW - winW - 20));
           y = Math.floor(Math.random() * (screenH - winH - 60));
-          if (x < screenW * 0.3 && y > screenH * 0.4 && y < screenH * 0.6) continue;
           attempts++;
         } while (doesOverlap(x, y, winW, winH) && attempts < 100);
 
