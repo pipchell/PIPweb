@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>:(</title>
+  <style>
+    @font-face {
+      font-family: 'ComputerPixel7';
+      src: url('ComputerPixel7-mnL2.ttf') format('truetype');
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background-color: #0000AA; /* Classic BSOD blue */
+      color: white;
+      font-family: 'ComputerPixel7', monospace;
+      font-size: 18px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: left;
+    }
+
+    .bsod {
+      width: 90%;
+      max-width: 800px;
+      line-height: 1.4;
+    }
+
+    .bsod h1 {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    .blink {
+      animation: blink 1.2s steps(2, start) infinite;
+    }
+
+    @keyframes blink {
+      to {
+        visibility: hidden;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bsod">
+    <h1>*** STOP: 0x0000008E (0xC0000005, 0xBF87EBB2, 0xBACC3A08, 0x00000000)</h1>
+    <p>A problem has been detected and Windows has been shut down to prevent damage to your computer.</p>
+    <br>
+    <p>If this is the first time you've seen this Stop error screen, restart your computer. If this screen appears again, follow these steps:</p>
+    <p>Check to make sure any new hardware or software is properly installed.</p>
+    <p>If this is a new installation, ask your hardware or software manufacturer for any Windows updates you might need.</p>
+    <p>If problems continue, disable or remove any newly installed hardware or software. Disable BIOS memory options such as caching or shadowing.</p>
+    <p>Technical Information:</p>
+    <p>*** STOP: 0x0000008E (0xC0000005, 0xBF87EBB2, 0xBACC3A08, 0x00000000)</p>
+    <p>*** win32k.sys - Address BF87EBB2 base at BF800000, DateStamp 3d6de5e5</p>
+    <br>
+    <p class="blink">_</p>
+  </div>
+</body>
+</html>
