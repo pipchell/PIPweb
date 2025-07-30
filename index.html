@@ -14,15 +14,15 @@
 html, body {
   margin: 0; padding: 0;
   height: 100%;
-  background: #1c1c1c; color: white;
-  font-family: 'win98', monospace;
   display: flex;
   flex-direction: column;
+  background: #1c1c1c; color: white;
+  font-family: 'win98', monospace;
 }
 a { color: white; text-decoration: none; }
 #topbar {
   position: fixed; top: 0; left: 0; right: 0;
-  background: #156433; padding: 14px 16px;
+  background: #156433; padding: 18px 24px;
   display: flex; align-items: center;
   justify-content: space-between;
   border-bottom: 2px outset #000; z-index: 999;
@@ -35,8 +35,8 @@ a { color: white; text-decoration: none; }
   margin-left: 8px;
 }
 #main {
-  flex: 1;
   padding-top: 120px;
+  flex: 1;
   max-width: 800px; margin: auto;
   text-align: center;
 }
@@ -44,39 +44,33 @@ section {
   display: none;
   margin: 60px 0;
   padding: 0 20px;
-  text-align: left;
+  text-align: center;
 }
 section.active { display: block; }
 section h2 {
   font-size: 28px;
   color: #17d860;
-  border-bottom: 2px inset #333;
-  padding-bottom: 6px;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 }
 section p {
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.6;
-  background: rgba(0,0,0,0.4);
-  border: 2px inset #333;
-  border-radius: 6px;
-  padding: 12px;
-  margin: 8px 0;
+  margin: 12px auto;
+  max-width: 700px;
 }
-.project, .social { margin-top: 12px; }
+.project, .social { margin-top: 24px; }
 .project a, .social a {
   display: inline-block;
   margin-top: 4px;
   background: #444;
   border: 2px outset #888;
-  padding: 4px 10px;
+  padding: 6px 14px;
 }
 footer {
   text-align: center;
-  margin: 40px auto 20px;
-  font-size: 14px;
-  color: #aaa;
-  padding-bottom: 40px;
+  font-size: 14px; color: #aaa;
+  margin-top: auto;
+  padding: 20px 0;
 }
 </style>
 </head>
@@ -97,25 +91,25 @@ footer {
 
 <div id="main">
   <section id="home">
-    <img src="logo.png" alt="site logo" style="width: 100px; display: block; margin: 0 auto 20px;">
-    <h1>👋 hi, i'm pip chell</h1>
-    <p>welcome to my retro-inspired corner of the web. i build nostalgic apps, code in cozy corners, and have an obsession with old-school tech aesthetics.</p>
+    <img src="logo.png" alt="logo" style="width: 96px; margin-bottom: 20px;">
+    <h1>i'm pip chell</h1>
+    <p>welcome to my retro-inspired world — explore code, pixels, and personal projects through a 98-style lens.</p>
   </section>
 
   <section id="about">
     <h2>about me</h2>
-    <p>i’m pip—a tinkerer in code and retro design. i craft nostalgic tools, write quirky experiments, and love anything pixel‑perfect.</p>
+    <p>i’m pip — a creative coder & digital tinkerer. i love reviving old aesthetics with new tech, and crafting playful web stuff with a nostalgic twist.</p>
   </section>
 
   <section id="projects">
     <h2>projects</h2>
     <div class="project">
       <p><strong>retro timer</strong> — countdown with snow, confetti, and 98 style.</p>
-      <a href="#" target="_blank">view project</a>
+      <a href="#">view project</a>
     </div>
     <div class="project">
       <p><strong>dvd screensaver app</strong> — bouncy logo, electron build.</p>
-      <a href="#" target="_blank">try it</a>
+      <a href="#">try it</a>
     </div>
   </section>
 
@@ -127,7 +121,7 @@ footer {
 </div>
 
 <footer>
-  © 2025 pip chell — built with code, love, and old‑school vibes.
+  © 2025 pip chell — built with code, love, and old-school vibes.
 </footer>
 
 <script>
@@ -147,7 +141,6 @@ footer {
     });
   });
 
-  // Show home by default
   showSection('#home');
 </script>
 
