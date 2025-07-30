@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>win98 site</title>
+  <title>pip chell — win98 portfolio</title>
   <link rel="icon" href="logo.png" type="image/png">
   <style>
     @font-face {
@@ -23,7 +23,7 @@
       height: 100%;
       background-color: #1c1c1c;
       font-family: 'win98', monospace;
-      overflow: hidden;
+      overflow-x: hidden;
       letter-spacing: 0.04em;
     }
 
@@ -37,7 +37,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 8px 16px;
+      padding: 6px 12px;
       z-index: 200;
       border-bottom: 2px outset #000;
       box-shadow: 0 2px 0 #000;
@@ -46,235 +46,100 @@
     #topbar-left {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 8px;
       cursor: pointer;
     }
 
     #topbar-left img {
-      width: 24px;
-      height: 24px;
+      width: 20px;
+      height: 20px;
     }
 
     #topbar-left .name {
-      font-size: 16px;
+      font-size: 14px;
     }
 
-    #topbar .buttons {
-      display: flex;
-      justify-content: center;
-      flex-grow: 1;
-      gap: 16px;
-    }
-
-    #topbar button {
-      background: #2a2a2a;
-      border: 2px outset #666;
-      color: white;
-      padding: 6px 14px;
-      font-family: 'win98';
-      cursor: pointer;
-      min-width: 80px;
-      text-align: center;
-    }
-
-    .window {
-      position: absolute;
-      background: rgba(42, 42, 42, 0.3);
-      border: 2px solid #888;
-      box-shadow: 4px 4px 0 #000;
-      padding: 20px;
-      color: #f0f0f0;
-      animation: fadeIn 0.6s ease;
-      transition: all 0.3s ease;
-    }
-
-    .title {
-      background: #156433;
-      color: #ddd;
-      padding: 6px 12px;
-      font-weight: bold;
-      margin: -20px -20px 16px -20px;
-      border-bottom: 2px solid #111;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .title button {
-      background: transparent;
-      border: none;
-      color: #ddd;
-      font-size: 32px;
-      cursor: pointer;
-    }
-
-    #homescreen {
-      position: absolute;
-      top: 10%;
-      left: 50%;
-      transform: translate(-50%, -10%);
+    #main {
+      padding-top: 80px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 16px;
-      z-index: 301;
-      pointer-events: none;
-    }
-
-    #homescreen img {
-      width: 300px;
-      height: auto;
-      opacity: 1;
-    }
-
-    #homescreen h1 {
-      margin: 0;
-      color: white;
-      font-size: 64px;
-      opacity: 1;
-    }
-
-    #homescreen p {
-      color: white;
-      font-size: 24px;
-      max-width: 900px;
       text-align: center;
+      color: white;
     }
 
-    button {
-      font-family: 'win98', monospace;
-      background: #444;
+    #main img {
+      width: 160px;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 36px;
+      margin: 0;
+    }
+
+    p.bio {
+      font-size: 18px;
+      max-width: 720px;
+      background: rgba(0, 0, 0, 0.4);
+      border: 2px inset #333;
+      border-radius: 8px;
+      padding: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+      line-height: 1.6;
+      margin-top: 16px;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .links a {
+      text-decoration: none;
       color: white;
+      background: #444;
       border: 2px outset #888;
       padding: 6px 14px;
-      cursor: pointer;
-      margin-top: 12px;
-      letter-spacing: 0.06em;
+      font-family: 'win98';
+      font-size: 16px;
+      display: inline-block;
       min-width: 120px;
-      text-align: center;
+      transition: 0.2s;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.9); }
-      to { opacity: 1; transform: scale(1); }
+    .links a:hover {
+      background: #666;
     }
   </style>
 </head>
 <body>
   <div id="topbar">
-    <div id="topbar-left" onclick="goHome()">
+    <div id="topbar-left">
       <img src="logo.png" alt="icon">
       <span class="name">pip chell</span>
     </div>
-    <div class="buttons" id="topbar-buttons"></div>
   </div>
-  <div id="homescreen">
+
+  <div id="main">
     <img src="logo.png" alt="logo"/>
     <h1>pip chell</h1>
-    <p>welcome to my win98-style corner of the internet. explore tools, retro apps, and more.</p>
+    <p class="bio">
+      hey! i’m pip — a creative explorer of retro design, web tech, and digital nostalgia.<br/>
+      this space is a throwback to simpler times, but packed with modern ideas. i build fun tools, apps, and experiences with a win98 aesthetic.<br/>
+      scroll through, click around, and enjoy the vibe.
+    </p>
+
+    <div class="links">
+      <a href="#projects">projects</a>
+      <a href="mailto:pip@example.com">email me</a>
+      <a href="https://github.com/yourprofile" target="_blank">github</a>
+      <a href="https://yourdomain.xyz" target="_blank">website</a>
+    </div>
   </div>
-
-  <script>
-    const windows = [
-      { id: 'about', title: 'about', content: 'welcome to pip chell. retro zone.', button: 'learn more' },
-      { id: 'projects', title: 'projects', content: 'fun tools and apps.', button: 'explore' },
-      { id: 'contact', title: 'contact', content: 'email: pip@example.com', button: 'say hi' }
-    ];
-
-    const placed = [];
-
-    function doesOverlap(x, y, w, h) {
-      const homeRect = document.querySelector('#homescreen').getBoundingClientRect();
-      const topbarRect = document.querySelector('#topbar').getBoundingClientRect();
-      const buffer = 40;
-      const homeArea = {
-        x: homeRect.left - buffer,
-        y: homeRect.top - buffer,
-        w: homeRect.width + buffer * 2,
-        h: homeRect.height + buffer * 2
-      };
-      const topbarHeight = topbarRect.height;
-      return placed.some(pos => (
-        x < pos.x + pos.w &&
-        x + w > pos.x &&
-        y < pos.y + pos.h &&
-        y + h > pos.y
-      )) || (
-        x < homeArea.x + homeArea.w &&
-        x + w > homeArea.x &&
-        y < homeArea.y + homeArea.h &&
-        y + h > homeArea.y
-      ) || (y < topbarHeight);
-    }
-
-    function goHome() {
-      document.querySelectorAll('.window').forEach(w => w.remove());
-      document.querySelector('#homescreen').style.display = 'flex';
-    }
-
-    function openWindow(id) {
-      document.querySelectorAll('.window').forEach(w => w.remove());
-      const win = document.querySelector(`#win-${id}`);
-      if (win) {
-        win.style.zIndex = 199;
-        win.style.display = 'block';
-        win.style.left = '0';
-        win.style.top = document.querySelector('#topbar').offsetHeight + 'px';
-        win.style.width = '100vw';
-        win.style.height = `calc(100vh - ${document.querySelector('#topbar').offsetHeight}px)`;
-        win.style.transform = 'scale(1)';
-        document.querySelector('#homescreen').style.display = 'none';
-      }
-    }
-
-    function closeWindow(id) {
-      const win = document.querySelector(`#win-${id}`);
-      if (win) {
-        win.remove();
-        document.querySelector('#homescreen').style.display = 'flex';
-      }
-    }
-
-    function createUI() {
-      const screenW = window.innerWidth;
-      const screenH = window.innerHeight;
-      const winW = Math.max(240, screenW * 0.25);
-      const winH = Math.max(160, screenH * 0.22);
-
-      windows.forEach((win, i) => {
-        let x, y, attempts = 0;
-        do {
-          x = Math.floor(Math.random() * (screenW - winW - 20));
-          y = Math.floor(Math.random() * (screenH - winH - 60));
-          attempts++;
-        } while (doesOverlap(x, y, winW, winH) && attempts < 100);
-
-        placed.push({ x, y, w: winW + 20, h: winH + 20 });
-
-        const div = document.createElement('div');
-        div.className = 'window';
-        div.id = `win-${win.id}`;
-        div.style.left = `${x}px`;
-        div.style.top = `${y}px`;
-        div.style.width = `${winW}px`;
-        div.innerHTML = `
-          <div class="title">
-            ${win.title}
-            <button onclick="closeWindow('${win.id}')">x</button>
-          </div>
-          <div class="content">${win.content}</div>
-          <button>${win.button}</button>
-        `;
-        document.body.appendChild(div);
-
-        const topBtn = document.createElement('button');
-        topBtn.textContent = win.title;
-        topBtn.onclick = () => openWindow(win.id);
-        document.querySelector('#topbar-buttons').appendChild(topBtn);
-      });
-    }
-
-    window.onload = createUI;
-  </script>
 </body>
 </html>
