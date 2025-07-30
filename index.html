@@ -35,22 +35,28 @@
       background: #156433;
       color: #fff;
       display: flex;
+      justify-content: space-between;
+      align-items: center;
       padding: 8px 16px;
       z-index: 200;
       border-bottom: 2px outset #000;
       box-shadow: 0 2px 0 #000;
-      align-items: center;
-      gap: 24px;
     }
 
-    #topbar img {
+    #topbar-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+    }
+
+    #topbar-left img {
       width: 40px;
       height: 40px;
     }
 
-    #topbar .name {
+    #topbar-left .name {
       font-size: 20px;
-      margin-left: 12px;
     }
 
     #topbar .buttons {
@@ -102,9 +108,9 @@
 
     #homescreen {
       position: absolute;
-      top: 25%;
+      top: 20%;
       left: 50%;
-      transform: translate(-50%, -25%);
+      transform: translate(-50%, -20%);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -114,7 +120,7 @@
     }
 
     #homescreen img {
-      width: 500px;
+      width: 600px;
       height: auto;
       opacity: 1;
     }
@@ -122,14 +128,14 @@
     #homescreen h1 {
       margin: 0;
       color: white;
-      font-size: 160px;
+      font-size: 180px;
       opacity: 1;
     }
 
     #homescreen p {
       color: white;
-      font-size: 28px;
-      max-width: 800px;
+      font-size: 30px;
+      max-width: 900px;
       text-align: center;
     }
 
@@ -152,8 +158,10 @@
 </head>
 <body>
   <div id="topbar">
-    <img src="logo.png" alt="icon">
-    <span class="name">pip chell</span>
+    <div id="topbar-left" onclick="goHome()">
+      <img src="logo.png" alt="icon">
+      <span class="name">pip chell</span>
+    </div>
     <div class="buttons" id="topbar-buttons"></div>
   </div>
   <div id="homescreen">
@@ -195,10 +203,13 @@
       ) || (y < topbarHeight);
     }
 
+    function goHome() {
+      document.querySelectorAll('.window').forEach(w => w.remove());
+      document.querySelector('#homescreen').style.display = 'flex';
+    }
+
     function openWindow(id) {
-      document.querySelectorAll('.window').forEach(w => {
-        w.style.display = 'none';
-      });
+      document.querySelectorAll('.window').forEach(w => w.style.display = 'none');
       const win = document.querySelector(`#win-${id}`);
       if (win) {
         win.style.zIndex = 199;
