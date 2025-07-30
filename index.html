@@ -27,10 +27,9 @@
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 24px;
       padding: 40px;
-      height: 100%;
       animation: fadeIn 1s ease;
     }
 
@@ -47,9 +46,14 @@
       animation: slideUp 0.8s ease forwards;
     }
 
+    .window:nth-child(1) { animation-delay: 0s; }
     .window:nth-child(2) { animation-delay: 0.1s; }
     .window:nth-child(3) { animation-delay: 0.2s; }
     .window:nth-child(4) { animation-delay: 0.3s; }
+    .window:nth-child(5) { animation-delay: 0.4s; }
+    .window:nth-child(6) { animation-delay: 0.5s; }
+    .window:nth-child(7) { animation-delay: 0.6s; }
+    .window:nth-child(8) { animation-delay: 0.7s; }
 
     .title {
       background: #333366;
@@ -69,6 +73,7 @@
       cursor: pointer;
       transition: all 0.2s ease;
       margin-top: 12px;
+      width: fit-content;
     }
 
     button:hover {
@@ -91,6 +96,15 @@
       color: #ffffff;
     }
 
+    /* Make some windows bigger */
+    .tall {
+      grid-row: span 2;
+    }
+
+    .wide {
+      grid-column: span 2;
+    }
+
     @keyframes slideUp {
       to {
         opacity: 1;
@@ -108,15 +122,16 @@
   <div class="grid">
     <div class="window">
       <div class="title">about</div>
-      <p>welcome to my win98 zone.<br>pixel font, dark mood, and animated grid magic.</p>
+      <p>welcome to my win98 zone.<br>animated grid magic in the dark.</p>
     </div>
 
-    <div class="window">
+    <div class="window wide">
       <div class="title">projects</div>
       <ul>
         <li><a href="#">franksim</a></li>
         <li><a href="#">countdown</a></li>
         <li><a href="#">screensaver</a></li>
+        <li><a href="#">pixel painter</a></li>
       </ul>
     </div>
 
@@ -126,9 +141,34 @@
       <button onclick="alert('yo!')">say hi</button>
     </div>
 
+    <div class="window tall">
+      <div class="title">blog</div>
+      <p>cool things i'm working on:<br><br>– weird ui experiments<br>– retro css tricks<br>– web-to-screensaver ideas</p>
+    </div>
+
     <div class="window">
-      <div class="title">extra</div>
-      <p>animations, scaling buttons, subtle vintage vibes.<br>refresh for the show again :)</p>
+      <div class="title">gallery</div>
+      <p>pixel art, screenshots, and cursed wallpapers coming soon.</p>
+    </div>
+
+    <div class="window">
+      <div class="title">links</div>
+      <ul>
+        <li><a href="#">github</a></li>
+        <li><a href="#">spotify</a></li>
+        <li><a href="#">cloudflare</a></li>
+      </ul>
+    </div>
+
+    <div class="window">
+      <div class="title">music</div>
+      <p>playlist selector or winamp embed could go here</p>
+      <button>play</button>
+    </div>
+
+    <div class="window">
+      <div class="title">cool facts</div>
+      <p>did you know? ctrl+alt+del was invented for debugging, not rage resets.</p>
     </div>
   </div>
 </body>
