@@ -41,20 +41,25 @@
       box-shadow: 0 2px 0 #000;
       align-items: center;
       justify-content: center;
-      gap: 16px;
+      gap: 24px;
     }
 
     #topbar img {
-      width: 32px;
-      height: 32px;
-      position: absolute;
-      left: 16px;
+      width: 40px;
+      height: 40px;
+      margin-right: 12px;
     }
 
     #topbar .name {
-      position: absolute;
-      left: 60px;
-      font-size: 18px;
+      font-size: 20px;
+      margin-right: auto;
+    }
+
+    #topbar .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-grow: 1;
     }
 
     #topbar button {
@@ -105,22 +110,22 @@
       display: flex;
       align-items: center;
       gap: 48px;
-      z-index: 101;
+      z-index: 300;
       pointer-events: none;
     }
 
     #homescreen img {
-      width: 320px;
-      height: 320px;
-      z-index: 150;
+      width: 400px;
+      height: 400px;
+      z-index: 301;
     }
 
     #homescreen h1 {
       margin: 0;
       color: white;
-      font-size: 120px;
+      font-size: 140px;
       opacity: 1;
-      z-index: 150;
+      z-index: 301;
     }
 
     button {
@@ -144,6 +149,7 @@
   <div id="topbar">
     <img src="logo.png" alt="icon">
     <span class="name">pip chell</span>
+    <div class="buttons" id="topbar-buttons"></div>
   </div>
   <div id="homescreen">
     <img src="logo.png" alt="logo"/>
@@ -161,6 +167,7 @@
 
     function doesOverlap(x, y, w, h) {
       const homeRect = document.querySelector('#homescreen').getBoundingClientRect();
+      const topbarRect = document.querySelector('#topbar').getBoundingClientRect();
       const buffer = 40;
       const homeArea = {
         x: homeRect.left - buffer,
@@ -168,6 +175,7 @@
         w: homeRect.width + buffer * 2,
         h: homeRect.height + buffer * 2
       };
+      const topbarHeight = topbarRect.height;
       return placed.some(pos => (
         x < pos.x + pos.w &&
         x + w > pos.x &&
@@ -178,13 +186,17 @@
         x + w > homeArea.x &&
         y < homeArea.y + homeArea.h &&
         y + h > homeArea.y
-      );
+      ) || (y < topbarHeight);
     }
 
     function openWindow(id) {
+      document.querySelectorAll('.window').forEach(w => {
+        w.style.display = 'none';
+      });
       const win = document.querySelector(`#win-${id}`);
       if (win) {
         win.style.zIndex = 199;
+        win.style.display = 'block';
         win.style.left = 0;
         win.style.top = 0;
         win.style.width = '100vw';
@@ -237,7 +249,7 @@
         const topBtn = document.createElement('button');
         topBtn.textContent = win.title;
         topBtn.onclick = () => openWindow(win.id);
-        document.querySelector('#topbar').appendChild(topBtn);
+        document.querySelector('#topbar-buttons').appendChild(topBtn);
       });
     }
 
