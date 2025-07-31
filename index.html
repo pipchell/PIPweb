@@ -19,10 +19,10 @@
     html, body {
       margin: 0;
       padding: 0;
+      height: 100%;
+      font-family: 'win98', monospace;
       background: #1c1c1c;
       color: white;
-      font-family: 'win98', monospace;
-      height: 100%;
       display: flex;
       flex-direction: column;
     }
@@ -34,25 +34,27 @@
 
     #topbar {
       position: fixed;
-      top: 0; left: 0; right: 0;
+      top: 0;
+      left: 0;
+      right: 0;
       background: #156433;
-      padding: 14px 16px;
+      padding: 10px 14px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       border-bottom: 2px outset #000;
-      z-index: 999;
+      z-index: 1000;
     }
 
     #topbar-left {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
 
     #topbar-left img {
-      width: 24px;
-      height: 24px;
+      width: 22px;
+      height: 22px;
     }
 
     .nav-links {
@@ -63,8 +65,8 @@
     .nav-links a {
       background: #2a2a2a;
       border: 2px outset #666;
-      padding: 8px 14px;
-      font-size: 15px;
+      padding: 6px 12px;
+      font-size: 14px;
     }
 
     #hamburger {
@@ -73,18 +75,16 @@
 
     #main {
       flex: 1;
-      padding-top: 74px;
-      max-width: 800px;
-      margin: auto;
-      width: 100%;
-      text-align: center;
+      padding-top: 64px;
       padding-bottom: 40px;
+      max-width: 800px;
+      width: 100%;
+      margin: auto;
     }
 
     section {
       display: none;
-      margin: 60px 0;
-      padding: 0 20px;
+      padding: 20px;
       text-align: left;
     }
 
@@ -93,26 +93,25 @@
     }
 
     section h2 {
-      font-size: 28px;
+      font-size: 26px;
       color: #17d860;
       border-bottom: 2px inset #333;
+      margin-bottom: 10px;
       padding-bottom: 6px;
-      margin-bottom: 12px;
     }
 
     section p {
-      font-size: 16px;
+      font-size: 15px;
       line-height: 1.6;
-      margin: 8px 0;
     }
 
     .project, .social {
-      margin-top: 12px;
+      margin: 14px 0;
     }
 
     .project a, .social a {
       display: inline-block;
-      margin-top: 4px;
+      margin-top: 6px;
       background: #444;
       border: 2px outset #888;
       padding: 4px 10px;
@@ -120,16 +119,16 @@
 
     footer {
       text-align: center;
-      font-size: 14px;
-      color: #aaa;
       padding: 20px 10px;
+      font-size: 13px;
+      color: #aaa;
       border-top: 2px inset #000;
     }
 
-    /* Hamburger + Mobile Menu */
+    /* Hamburger + Responsive */
     @media (max-width: 768px) {
       #topbar {
-        padding: 10px 12px;
+        padding: 6px 12px;
       }
 
       .nav-links {
@@ -138,9 +137,9 @@
         background: #2a2a2a;
         position: absolute;
         top: 100%;
-        right: 16px;
+        right: 14px;
         border: 2px outset #000;
-        z-index: 998;
+        z-index: 999;
       }
 
       .nav-links.show {
@@ -162,7 +161,7 @@
 
   <div id="topbar">
     <div id="topbar-left">
-      <img src="logo.png" alt="icon">
+      <img src="logo.png" alt="logo">
       <span>pip chell</span>
     </div>
     <div id="hamburger">☰</div>
@@ -176,4 +175,72 @@
 
   <div id="main">
     <section id="home" class="active">
-      <h1 styl
+      <h2>welcome</h2>
+      <img src="logo.png" alt="logo" style="width: 100px; display: block; margin: 20px auto;">
+      <p>i'm pip chell — blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah</p>
+    </section>
+
+    <section id="about">
+      <h2>about me</h2>
+      <p>blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah</p>
+    </section>
+
+    <section id="projects">
+      <h2>projects</h2>
+      <div class="project">
+        <p><strong>blah 1</strong> — blah blah blah</p>
+        <a href="#">view</a>
+      </div>
+      <div class="project">
+        <p><strong>blah 2</strong> — blah blah blah</p>
+        <a href="#">view</a>
+      </div>
+    </section>
+
+    <section id="socials">
+      <h2>socials</h2>
+      <div class="social">
+        <p>blah 1</p>
+        <a href="#">link</a>
+      </div>
+      <div class="social">
+        <p>blah 2</p>
+        <a href="#">link</a>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    © 2025 pip chell — all rights blah'd
+  </footer>
+
+  <script>
+    const links = document.querySelectorAll('.nav-links a');
+    const sections = document.querySelectorAll('section');
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.querySelector('.nav-links');
+
+    function showSection(id) {
+      sections.forEach(s => s.classList.remove('active'));
+      const target = document.querySelector(id);
+      if (target) target.classList.add('active');
+      navLinks.classList.remove('show'); // mobile close
+    }
+
+    links.forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        showSection(link.getAttribute('href'));
+      });
+    });
+
+    // Default section
+    showSection('#home');
+
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+  </script>
+
+</body>
+</html>
