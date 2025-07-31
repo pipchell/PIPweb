@@ -10,23 +10,50 @@
       font-family: 'win98';
       src: url('windows-98.otf') format('opentype');
     }
-    * { box-sizing: border-box; text-transform: lowercase; }
-    html, body {
-      margin: 0; padding: 0;
-      background: #1c1c1c; color: white;
-      font-family: 'win98', monospace;
+
+    * {
+      box-sizing: border-box;
+      text-transform: lowercase;
     }
-    a { color: white; text-decoration: none; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #1c1c1c;
+      color: white;
+      font-family: 'win98', monospace;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      color: white;
+      text-decoration: none;
+    }
 
     #topbar {
-      position: fixed; top: 0; left: 0; right: 0;
-      background: #156433; padding: 14px 16px;
-      display: flex; align-items: center;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: #156433;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
       justify-content: space-between;
-      border-bottom: 2px outset #000; z-index: 999;
+      border-bottom: 2px outset #000;
+      z-index: 999;
     }
-    #topbar-left { display: flex; align-items: center; gap: 12px; }
-    #topbar-left img { width: 24px; height: 24px; }
+
+    #topbar-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    #topbar-left img {
+      width: 24px;
+      height: 24px;
+    }
 
     .nav-links {
       display: flex;
@@ -34,8 +61,10 @@
     }
 
     .nav-links a {
-      background: #2a2a2a; border: 2px outset #666;
-      padding: 8px 14px; font-size: 15px;
+      background: #2a2a2a;
+      border: 2px outset #666;
+      padding: 8px 14px;
+      font-size: 15px;
     }
 
     #hamburger {
@@ -43,10 +72,13 @@
     }
 
     #main {
-      padding-top: 120px;
-      max-width: 800px; margin: auto;
+      flex: 1;
+      padding-top: 74px;
+      max-width: 800px;
+      margin: auto;
+      width: 100%;
       text-align: center;
-      min-height: 80vh;
+      padding-bottom: 40px;
     }
 
     section {
@@ -56,7 +88,9 @@
       text-align: left;
     }
 
-    section.active { display: block; }
+    section.active {
+      display: block;
+    }
 
     section h2 {
       font-size: 28px;
@@ -72,7 +106,9 @@
       margin: 8px 0;
     }
 
-    .project, .social { margin-top: 12px; }
+    .project, .social {
+      margin-top: 12px;
+    }
 
     .project a, .social a {
       display: inline-block;
@@ -86,17 +122,23 @@
       text-align: center;
       font-size: 14px;
       color: #aaa;
-      padding: 40px 0 20px;
+      padding: 20px 10px;
+      border-top: 2px inset #000;
     }
 
     /* Hamburger + Mobile Menu */
     @media (max-width: 768px) {
+      #topbar {
+        padding: 10px 12px;
+      }
+
       .nav-links {
         display: none;
         flex-direction: column;
         background: #2a2a2a;
         position: absolute;
-        top: 58px; right: 16px;
+        top: 100%;
+        right: 16px;
         border: 2px outset #000;
         z-index: 998;
       }
@@ -118,82 +160,20 @@
 </head>
 <body>
 
-<div id="topbar">
-  <div id="topbar-left">
-    <img src="logo.png" alt="icon">
-    <span>pip chell</span>
-  </div>
-  <div id="hamburger">☰</div>
-  <div class="nav-links">
-    <a href="#home">home</a>
-    <a href="#about">about</a>
-    <a href="#projects">projects</a>
-    <a href="#socials">socials</a>
-  </div>
-</div>
-
-<div id="main">
-  <section id="home" class="active">
-    <h1 style="color: #17d860;">welcome</h1>
-    <img src="logo.png" alt="logo" style="width: 80px; margin: 20px auto;">
-    <p style="font-size: 18px;">i'm pip chell — blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah </p>
-  </section>
-
-  <section id="about">
-    <h2>about me</h2>
-    <p>blah blah blah</p>
-  </section>
-
-  <section id="projects">
-    <h2>projects</h2>
-    <div class="project">
-      <p><strong>blah 1</strong> — blah blah blah</p>
-      <a href="#">view</a>
+  <div id="topbar">
+    <div id="topbar-left">
+      <img src="logo.png" alt="icon">
+      <span>pip chell</span>
     </div>
-    <div class="project">
-      <p><strong>blah</strong> — blah blah blah</p>
-      <a href="#">view</a>
+    <div id="hamburger">☰</div>
+    <div class="nav-links">
+      <a href="#home">home</a>
+      <a href="#about">about</a>
+      <a href="#projects">projects</a>
+      <a href="#socials">socials</a>
     </div>
-  </section>
+  </div>
 
-  <section id="socials">
-    <h2>socials</h2>
-    <div class="social"><p>blah 1</p><a href="https://github.com/yourprofile" target="_blank">link</a></div>
-    <div class="social"><p>blah 2</p><a href="mailto:pip@example.com">link</a></div>
-  </section>
-</div>
-
-<footer>
-  © blah blah blah
-</footer>
-
-<script>
-  const links = document.querySelectorAll('.nav-links a');
-  const sections = document.querySelectorAll('section');
-  const hamburger = document.getElementById('hamburger');
-  const navLinks = document.querySelector('.nav-links');
-
-  function showSection(id) {
-    sections.forEach(s => s.classList.remove('active'));
-    const active = document.querySelector(id);
-    if (active) active.classList.add('active');
-    navLinks.classList.remove('show'); // Hide menu on nav click (mobile)
-  }
-
-  links.forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      showSection(link.getAttribute('href'));
-    });
-  });
-
-  // Show home by default
-  showSection('#home');
-
-  hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('show');
-  });
-</script>
-
-</body>
-</html>
+  <div id="main">
+    <section id="home" class="active">
+      <h1 styl
