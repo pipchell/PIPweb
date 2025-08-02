@@ -35,14 +35,13 @@
 
     #topbar {
       background: #156433;
-      padding: 8px 16px;  /* tightened vertical padding */
+      padding: 8px 16px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       border-bottom: 2px outset #000;
       z-index: 999;
-      position: relative;
-      height: 40px; /* fixed smaller height */
+      height: 36px;
       font-size: 17px;
     }
 
@@ -51,16 +50,15 @@
       align-items: center;
       gap: 12px;
       font-weight: bold;
-      font-size: 18px; /* bigger text */
+      font-size: 18px;
     }
 
     #topbar-left img {
-      width: 32px;  /* bigger logo */
-      height: 32px;
-      image-rendering: pixelated; /* for retro crispness */
+      width: 30px;
+      height: 30px;
+      image-rendering: pixelated;
     }
 
-    /* Desktop nav links */
     .nav-links {
       display: flex;
       gap: 8px;
@@ -81,7 +79,6 @@
       text-align: center;
     }
 
-    /* Landing page logo above welcome */
     #main-logo {
       width: 120px;
       height: 120px;
@@ -135,9 +132,6 @@
       background: #111;
     }
 
-    /* Hamburger menu styles */
-
-    /* Hide hamburger on desktop */
     #hamburger {
       display: none;
       flex-direction: column;
@@ -149,7 +143,6 @@
       image-rendering: pixelated;
     }
 
-    /* Retro blocky hamburger bars */
     #hamburger div {
       width: 100%;
       height: 6px;
@@ -161,12 +154,11 @@
       transition: none;
     }
 
-    /* Mobile styles */
     @media (max-width: 600px) {
       .nav-links {
         display: none;
         position: absolute;
-        top: 40px; /* match topbar height */
+        top: 36px;
         right: 0;
         background: #156433;
         flex-direction: column;
@@ -210,7 +202,6 @@
   </div>
 
   <div id="main">
-    <!-- Landing page big logo -->
     <img id="main-logo" src="logo.png" alt="pip chell logo" />
 
     <section id="home" class="active">
@@ -266,7 +257,6 @@
       link.addEventListener('click', e => {
         e.preventDefault();
         showSection(link.getAttribute('href'));
-        // On mobile, hide menu after click
         if(window.innerWidth <= 600){
           navLinks.classList.remove('show');
         }
@@ -275,7 +265,6 @@
 
     showSection('#home');
 
-    // Hamburger toggle
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.querySelector('.nav-links');
 
@@ -283,7 +272,6 @@
       navLinks.classList.toggle('show');
     });
 
-    // Keyboard accessible toggle for hamburger
     hamburger.addEventListener('keydown', (e) => {
       if(e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
