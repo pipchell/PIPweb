@@ -16,99 +16,70 @@
       background: #0a0a0a url('pixel-bg.png') repeat;
       color: white;
       font-family: 'win98', monospace;
+      height: 100%;
     }
-    a { color: #17d860; text-decoration: none; }
-
     header {
       position: fixed; top: 0; left: 0; right: 0;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 14px 20px; background: rgba(0, 0, 0, 0.7);
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 14px 20px; background: rgba(0,0,0,0.7);
       border-bottom: 2px solid #17d860; z-index: 999;
     }
-    header .logo {
-      display: flex; align-items: center; gap: 10px;
-    }
-    header .logo img { width: 28px; height: 28px; }
     header nav a {
-      margin-left: 20px;
-      font-size: 16px;
+      margin-left: 20px; font-size: 16px; color: #17d860; text-decoration: none;
     }
-
-    main {
-      padding-top: 100px; max-width: 1000px; margin: auto;
-      text-align: center;
+    .page {
+      display: none;
+      padding-top: 100px; max-width: 900px; margin: auto; text-align: center;
     }
-    main h1 {
-      font-size: 36px;
-      color: #17d860;
-      margin-bottom: 20px;
-    }
-    main p {
-      font-size: 18px; max-width: 800px; margin: 0 auto 40px;
-    }
-    section {
-      margin: 60px 0;
-      text-align: left;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-      padding: 0 20px;
-    }
-    section h2 {
-      font-size: 28px;
-      color: #17d860;
-      margin-bottom: 12px;
-      border-bottom: 1px solid #17d860;
-      padding-bottom: 6px;
-    }
+    .page.active { display: block; }
     footer {
-      text-align: center;
-      padding: 40px 0 20px;
-      font-size: 14px; color: #999;
-      border-top: 1px solid #17d860;
-      margin-top: 60px;
+      text-align: center; padding: 40px 0 20px; font-size: 14px; color: #999;
+      border-top: 1px solid #17d860; margin-top: 60px;
     }
   </style>
 </head>
 <body>
 
 <header>
-  <div class="logo">
-    <img src="logo.png" alt="logo">
-    <span>pip chell</span>
-  </div>
+  <div class="logo">pip chell</div>
   <nav>
-    <a href="#about">about</a>
-    <a href="#projects">projects</a>
-    <a href="#socials">socials</a>
+    <a href="#" onclick="showPage('home')">home</a>
+    <a href="#" onclick="showPage('about')">about</a>
+    <a href="#" onclick="showPage('projects')">projects</a>
+    <a href="#" onclick="showPage('socials')">socials</a>
   </nav>
 </header>
 
-<main>
+<section id="home" class="page active">
   <h1>welcome 👋</h1>
-  <p>i'm pip chell — blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah.</p>
-</main>
-
-<section id="about">
-  <h2>about me</h2>
-  <p>blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah.</p>
+  <p>blah blah blah blah blah blah blah blah blah.</p>
 </section>
 
-<section id="projects">
-  <h2>projects</h2>
-  <p>blah project 1 — blah blah blah. <a href="#">view</a></p>
-  <p>blah project 2 — blah blah blah. <a href="#">view</a></p>
+<section id="about" class="page">
+  <h1>about me</h1>
+  <p>blah blah blah about me section content goes here.</p>
 </section>
 
-<section id="socials">
-  <h2>socials</h2>
-  <p>blah 1 — <a href="#">link</a></p>
-  <p>blah 2 — <a href="#">link</a></p>
+<section id="projects" class="page">
+  <h1>projects</h1>
+  <p>blah blah blah projects section content goes here.</p>
+</section>
+
+<section id="socials" class="page">
+  <h1>socials</h1>
+  <p>blah blah blah socials section content goes here.</p>
 </section>
 
 <footer>
   © 2025 pip chell. all rights reserved.
 </footer>
+
+<script>
+  function showPage(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
+</script>
 
 </body>
 </html>
