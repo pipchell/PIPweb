@@ -63,21 +63,32 @@
 
     #hamburger {
       display: none;
-      flex-direction: column;
-      justify-content: space-between;
-      width: 25px;
-      height: 18px;
+      width: 26px;
+      height: 22px;
       cursor: pointer;
       user-select: none;
+      position: relative;
+      image-rendering: pixelated;
+      /* to avoid anti-aliasing on pixel blocks */
     }
 
-    /* Hamburger lines */
+    /* Retro pixel block style hamburger lines */
     #hamburger span {
       display: block;
-      height: 3px;
+      width: 22px;
+      height: 6px;
       background: white;
-      border: 1px solid #000;
-      border-radius: 1px;
+      border: 2px outset #000;
+      margin-bottom: 4px;
+      box-sizing: border-box;
+      /* pixelated edges */
+      image-rendering: pixelated;
+      /* keep the blocky style */
+    }
+
+    /* Remove margin from last span */
+    #hamburger span:last-child {
+      margin-bottom: 0;
     }
 
     /* Mobile styles */
@@ -98,7 +109,7 @@
       }
 
       #hamburger {
-        display: flex;
+        display: block;
       }
     }
 
