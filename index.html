@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pip Chell</title>
+  <title>pip chell</title>
   <link rel="icon" href="logo.png" type="image/png" />
   <style>
     @font-face {
@@ -18,7 +18,6 @@
       background: #1c1c1c;
       color: white;
       height: 100%;
-      min-height: 100vh;
       display: flex;
       flex-direction: column;
     }
@@ -35,22 +34,19 @@
 
     #topbar {
       background: #156433;
-      padding: 8px 16px;
+      padding: 14px 16px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       border-bottom: 2px outset #000;
       z-index: 999;
-      height: 50px;
-      font-size: 17px;
+      height: 50px; /* good height for thicker top bar */
     }
 
     #topbar-left {
       display: flex;
       align-items: center;
-      gap: 12px;
-      font-weight: bold;
-      font-size: 18px;
+      gap: 10px;
     }
 
     #topbar-left img {
@@ -59,20 +55,16 @@
       image-rendering: pixelated;
     }
 
-    .nav-links {
-      display: flex;
-      gap: 8px;
-    }
-
     .nav-links a {
       background: #2a2a2a;
       border: 2px outset #666;
       padding: 8px 14px;
       font-size: 15px;
+      margin-left: 8px;
     }
 
     #main {
-      flex: 1 0 auto;
+      flex: 1;
       max-width: 800px;
       margin: auto;
       padding: 100px 20px 40px;
@@ -80,9 +72,10 @@
     }
 
     #main-logo {
+      display: block;
+      margin: 0 auto 20px auto;
       width: 120px;
       height: 120px;
-      margin: 0 auto 20px auto;
       image-rendering: pixelated;
     }
 
@@ -123,59 +116,11 @@
     }
 
     footer {
-      flex-shrink: 0;
       text-align: center;
       font-size: 14px;
       color: #aaa;
-      padding: 15px 20px;
+      padding: 20px;
       border-top: 2px inset #333;
-      background: #111;
-    }
-
-    #hamburger {
-      display: none;
-      flex-direction: column;
-      justify-content: space-around;
-      width: 28px;
-      height: 24px;
-      cursor: pointer;
-      user-select: none;
-      image-rendering: pixelated;
-    }
-
-    #hamburger div {
-      width: 100%;
-      height: 6px;
-      background-color: white;
-      border: 2px outset #999;
-      box-shadow: 1px 1px 0 #333 inset;
-      border-radius: 0;
-      margin: 2px 0;
-      transition: none;
-    }
-
-    @media (max-width: 600px) {
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 36px;
-        right: 0;
-        background: #156433;
-        flex-direction: column;
-        width: 160px;
-        border: 2px outset #000;
-        z-index: 1000;
-      }
-      .nav-links.show {
-        display: flex;
-      }
-      .nav-links a {
-        margin: 8px;
-        font-size: 18px;
-      }
-      #hamburger {
-        display: flex;
-      }
     }
   </style>
 </head>
@@ -186,13 +131,6 @@
       <img src="logo.png" alt="logo" />
       <span>pip chell</span>
     </div>
-
-    <div id="hamburger" aria-label="Toggle menu" role="button" tabindex="0">
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-
     <div class="nav-links">
       <a href="#home">home</a>
       <a href="#about">about</a>
@@ -202,9 +140,8 @@
   </div>
 
   <div id="main">
-    <img id="main-logo" src="logo.png" alt="pip chell logo" />
-
     <section id="home" class="active">
+      <img id="main-logo" src="logo.png" alt="big logo" />
       <h2>welcome</h2>
       <p>i'm pip chell — blah blah blah blah blah blah blah blah blah blah blah blah blah.</p>
     </section>
@@ -240,7 +177,7 @@
   </div>
 
   <footer>
-    © 2025 pip chell
+    © 2025 pip chell — retro portfolio
   </footer>
 
   <script>
@@ -257,27 +194,10 @@
       link.addEventListener('click', e => {
         e.preventDefault();
         showSection(link.getAttribute('href'));
-        if(window.innerWidth <= 600){
-          navLinks.classList.remove('show');
-        }
       });
     });
 
     showSection('#home');
-
-    const hamburger = document.getElementById('hamburger');
-    const navLinks = document.querySelector('.nav-links');
-
-    hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('show');
-    });
-
-    hamburger.addEventListener('keydown', (e) => {
-      if(e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        navLinks.classList.toggle('show');
-      }
-    });
   </script>
 
 </body>
