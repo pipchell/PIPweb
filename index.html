@@ -23,13 +23,18 @@
       font-family: 'win98', monospace;
       background: #1c1c1c;
       color: white;
-      display: flex;
-      flex-direction: column;
+      min-height: 100vh;
+      width: 100vw;
     }
 
     a {
-      color: white;
+      color: #17d860;
       text-decoration: none;
+      transition: color 0.15s;
+    }
+    a:hover {
+      color: #fff;
+      text-decoration: underline;
     }
 
     #topbar {
@@ -50,11 +55,20 @@
       display: flex;
       align-items: center;
       gap: 10px;
+      font-size: 19px;
+      font-family: 'win98', monospace;
+      color: #fff;
+      letter-spacing: 1px;
     }
 
     #topbar-left img {
       width: 22px;
       height: 22px;
+      image-rendering: pixelated;
+      vertical-align: middle;
+      border: 2px outset #222;
+      background: #222;
+      padding: 2px;
     }
 
     .nav-links {
@@ -63,10 +77,19 @@
     }
 
     .nav-links a {
-      background: #2a2a2a;
+      background: #222;
+      color: #17d860;
       border: 2px outset #666;
-      padding: 6px 12px;
-      font-size: 14px;
+      padding: 7px 16px;
+      font-size: 15px;
+      border-radius: 5px 5px 0 0;
+      transition: background 0.15s, color 0.15s;
+    }
+    .nav-links a.active, .nav-links a:focus {
+      background: #181818;
+      color: #fff;
+      border-bottom: 2px solid #1c1c1c;
+      z-index: 2;
     }
 
     #hamburger {
@@ -75,77 +98,151 @@
 
     #main {
       flex: 1;
-      padding-top: 64px;
-      padding-bottom: 40px;
-      max-width: 800px;
+      padding-top: 70px;
+      max-width: 420px;
       width: 100%;
-      margin: auto;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 70vh;
+      justify-content: flex-start;
     }
 
     section {
       display: none;
-      padding: 20px;
-      text-align: left;
+      width: 100%;
+      min-height: 350px;
+      background: #181818;
+      border: 2px outset #444;
+      border-radius: 0 0 7px 7px;
+      box-shadow: 0 0 20px #000a;
+      margin: 0 0 28px 0;
+      padding: 36px 28px 28px 28px;
+      text-align: center;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      animation: fadein 0.25s;
+    }
+
+    @keyframes fadein {
+      from { opacity: 0; transform: translateY(30px);}
+      to { opacity: 1; transform: none;}
     }
 
     section.active {
-      display: block;
+      display: flex;
     }
 
     section h2 {
-      font-size: 26px;
+      font-size: 25px;
       color: #17d860;
       border-bottom: 2px inset #333;
-      margin-bottom: 10px;
-      padding-bottom: 6px;
+      margin-bottom: 22px;
+      padding-bottom: 7px;
+      text-align: center;
+      font-weight: normal;
+      letter-spacing: 2px;
     }
 
-    section p {
+    section img.logo {
+      width: 90px;
+      margin: 14px auto 24px auto;
+      display: block;
+      border: 2px outset #000;
+      background: #222;
+      padding: 10px;
+      image-rendering: pixelated;
+    }
+
+    section .terminal-prompt {
+      font-size: 20px;
+      color: #17d860;
+      background: #222;
+      padding: 13px 16px 13px 18px;
+      border-radius: 4px;
+      width: fit-content;
+      margin: 0 auto 24px auto;
+      box-shadow: 0 0 10px #17d86022;
+      display: flex;
+      align-items: center;
+      border: 2px inset #111;
+      letter-spacing: 1.3px;
+      font-family: inherit;
+      min-width: 220px;
+    }
+    .blink {
+      animation: blink-cursor 1.1s steps(1) infinite;
+      margin-left: 4px;
+      font-weight: bold;
+    }
+    @keyframes blink-cursor {
+      0%,100% { color: transparent }
+      50% { color: #17d860 }
+    }
+
+    section p, section .project, section .social {
       font-size: 15px;
-      line-height: 1.6;
+      color: #fff;
+      line-height: 1.7;
+      margin: 15px 0;
     }
-
     .project, .social {
-      margin: 14px 0;
+      margin: 20px 0 0 0;
     }
-
+    .project-title {
+      font-weight: bold;
+      color: #fff;
+      letter-spacing: 1px;
+    }
     .project a, .social a {
       display: inline-block;
-      margin-top: 6px;
-      background: #444;
-      border: 2px outset #888;
-      padding: 4px 10px;
+      margin-top: 8px;
+      background: #222;
+      border: 2px outset #666;
+      color: #17d860;
+      padding: 4px 12px;
+      font-size: 14px;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+      border-radius: 3px;
     }
-
-    footer {
-      text-align: center;
-      padding: 20px 10px;
-      font-size: 13px;
-      color: #aaa;
-      border-top: 2px inset #000;
+    .project a:hover, .social a:hover {
+      background: #156433;
+      color: #fff;
     }
 
     /* Hamburger + Responsive */
+    @media (max-width: 600px) {
+      #main {
+        max-width: 99vw;
+        padding: 62px 3vw 0 3vw;
+      }
+      section {
+        padding: 19px 4vw 12px 4vw;
+      }
+      .nav-links {
+        gap: 1px;
+      }
+    }
     @media (max-width: 768px) {
       #topbar {
         padding: 6px 12px;
       }
-
       .nav-links {
         display: none;
         flex-direction: column;
-        background: #2a2a2a;
+        background: #222;
         position: absolute;
         top: 100%;
         right: 14px;
         border: 2px outset #000;
         z-index: 999;
       }
-
       .nav-links.show {
         display: flex;
       }
-
       #hamburger {
         display: block;
         cursor: pointer;
@@ -154,6 +251,16 @@
         border: 2px outset #666;
         font-size: 16px;
       }
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px 10px;
+      font-size: 13px;
+      color: #aaa;
+      border-top: 2px inset #000;
+      background: #181818;
+      letter-spacing: 0.5px;
     }
   </style>
 </head>
@@ -166,7 +273,7 @@
     </div>
     <div id="hamburger">☰</div>
     <div class="nav-links">
-      <a href="#home">home</a>
+      <a href="#home" class="active">home</a>
       <a href="#about">about</a>
       <a href="#projects">projects</a>
       <a href="#socials">socials</a>
@@ -176,7 +283,10 @@
   <div id="main">
     <section id="home" class="active">
       <h2>welcome</h2>
-      <img src="logo.png" alt="logo" style="width: 100px; display: block; margin: 20px auto;">
+      <img src="logo.png" class="logo" alt="logo">
+      <div class="terminal-prompt">
+        pipchell@web:~$ hi, i'm pip chell<span class="blink">█</span>
+      </div>
       <p>i'm pip chell — blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah</p>
     </section>
 
@@ -188,11 +298,11 @@
     <section id="projects">
       <h2>projects</h2>
       <div class="project">
-        <p><strong>blah 1</strong> — blah blah blah</p>
+        <span class="project-title">myne</span> — minimalist, win98-inspired sandbox game<br>
         <a href="#">view</a>
       </div>
       <div class="project">
-        <p><strong>blah 2</strong> — blah blah blah</p>
+        <span class="project-title">another cool thing</span> — insert description<br>
         <a href="#">view</a>
       </div>
     </section>
@@ -200,12 +310,10 @@
     <section id="socials">
       <h2>socials</h2>
       <div class="social">
-        <p>blah 1</p>
-        <a href="#">link</a>
+        github — <a href="https://github.com/pipchell" target="_blank">pipchell</a>
       </div>
       <div class="social">
-        <p>blah 2</p>
-        <a href="#">link</a>
+        mastodon — <a href="#" target="_blank">@pipchell</a>
       </div>
     </section>
   </div>
@@ -222,8 +330,11 @@
 
     function showSection(id) {
       sections.forEach(s => s.classList.remove('active'));
+      links.forEach(l => l.classList.remove('active'));
       const target = document.querySelector(id);
+      const nav = document.querySelector(`.nav-links a[href="${id}"]`);
       if (target) target.classList.add('active');
+      if (nav) nav.classList.add('active');
       navLinks.classList.remove('show'); // mobile close
     }
 
@@ -241,6 +352,5 @@
       navLinks.classList.toggle('show');
     });
   </script>
-
 </body>
 </html>
