@@ -3,106 +3,112 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pip Chell</title>
+  <title>pip chell</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon"/>
   <style>
     @font-face {
       font-family: 'win98';
       src: url('windows-98.otf') format('opentype');
     }
+    * { box-sizing: border-box; text-transform: lowercase; }
     html, body {
       margin: 0; padding: 0;
-      background: black url('pixel-bg.png') repeat; /* Replace with pixel-style background image */
+      background: #0a0a0a url('pixel-bg.png') repeat;
+      color: white;
       font-family: 'win98', monospace;
-      color: white;
-      min-height: 100vh;
     }
-    #container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 120px 20px 40px;
-      text-align: center;
-    }
+    a { color: #17d860; text-decoration: none; }
+
     header {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 16px;
-      background: rgba(0,0,0,0.8);
-      border-bottom: 2px solid #17d860;
-      z-index: 1000;
+      position: fixed; top: 0; left: 0; right: 0;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 20px; background: rgba(0, 0, 0, 0.7);
+      border-bottom: 2px solid #17d860; z-index: 999;
     }
-    header img { height: 40px; }
+    header .logo {
+      display: flex; align-items: center; gap: 10px;
+    }
+    header .logo img { width: 28px; height: 28px; }
     header nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 12px;
+      margin-left: 20px;
       font-size: 16px;
     }
-    header nav a:hover { color: #17d860; }
-    h1 {
-      font-size: 42px;
+
+    main {
+      padding-top: 100px; max-width: 1000px; margin: auto;
+      text-align: center;
+    }
+    main h1 {
+      font-size: 36px;
       color: #17d860;
       margin-bottom: 20px;
     }
+    main p {
+      font-size: 18px; max-width: 800px; margin: 0 auto 40px;
+    }
     section {
-      text-align: left;
       margin: 60px 0;
-      background: rgba(0,0,0,0.5);
-      padding: 20px;
-      border: 2px outset #17d860;
-      border-radius: 6px;
+      text-align: left;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0 20px;
     }
     section h2 {
       font-size: 28px;
-      border-bottom: 1px solid #17d860;
-      padding-bottom: 8px;
+      color: #17d860;
       margin-bottom: 12px;
+      border-bottom: 1px solid #17d860;
+      padding-bottom: 6px;
     }
-    section p { line-height: 1.6; }
     footer {
       text-align: center;
-      font-size: 14px;
-      color: #aaa;
-      margin-top: 40px;
-      padding: 20px 0;
+      padding: 40px 0 20px;
+      font-size: 14px; color: #999;
       border-top: 1px solid #17d860;
+      margin-top: 60px;
     }
   </style>
 </head>
 <body>
 
 <header>
-  <div id="logo"><img src="logo.png" alt="logo"></div>
+  <div class="logo">
+    <img src="logo.png" alt="logo">
+    <span>pip chell</span>
+  </div>
   <nav>
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#socials">Socials</a>
+    <a href="#about">about</a>
+    <a href="#projects">projects</a>
+    <a href="#socials">socials</a>
   </nav>
 </header>
 
-<div id="container">
+<main>
   <h1>welcome 👋</h1>
   <p>i'm pip chell — blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah.</p>
+</main>
 
-  <section id="about">
-    <h2>about me</h2>
-    <p>blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah.</p>
-  </section>
+<section id="about">
+  <h2>about me</h2>
+  <p>blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah.</p>
+</section>
 
-  <section id="projects">
-    <h2>projects</h2>
-    <p>blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah.</p>
-  </section>
+<section id="projects">
+  <h2>projects</h2>
+  <p>blah project 1 — blah blah blah. <a href="#">view</a></p>
+  <p>blah project 2 — blah blah blah. <a href="#">view</a></p>
+</section>
 
-  <section id="socials">
-    <h2>socials</h2>
-    <p>blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah.</p>
-  </section>
+<section id="socials">
+  <h2>socials</h2>
+  <p>blah 1 — <a href="#">link</a></p>
+  <p>blah 2 — <a href="#">link</a></p>
+</section>
 
-  <footer>© 2025 Pip Chell. All rights reserved.</footer>
-</div>
+<footer>
+  © 2025 pip chell. all rights reserved.
+</footer>
 
 </body>
 </html>
