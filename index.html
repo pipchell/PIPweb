@@ -4,156 +4,271 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pip Chell</title>
+  <link rel="icon" type="image/png" href="logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:wght@400;600;700&display=swap" rel="stylesheet">
+
   <style>
-    body {
+    * {
       margin: 0;
-      font-family: Arial, sans-serif;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Google Sans Code", sans-serif;
+    }
+
+    body {
       background: #111;
       color: white;
-      text-align: center;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
     header {
-      background: #17D860;
-      color: #111;
-      padding: 15px;
-      font-weight: bold;
-      font-size: 1.5em;
+      background: #159e4d;
+      color: white;
+      padding: 15px 30px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header .title {
+      font-size: 1.8em;
+      font-weight: 700;
     }
 
     header .icons {
       display: flex;
-      gap: 15px;
+      gap: 20px;
     }
 
     header .icons img {
-      width: 24px;
-      height: 24px;
+      width: 38px;
+      height: 38px;
       cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    header .icons img:hover {
+      transform: scale(1.15);
+    }
+
+    main {
+      flex: 1;
     }
 
     section {
       display: none;
-      padding: 30px 20px;
-      max-width: 800px;
+      padding: 50px 30px;
+      min-height: calc(100vh - 140px);
+      max-width: 1400px;
       margin: auto;
     }
 
     section.active {
-      display: block;
+      display: flex;
+      gap: 40px;
     }
 
-    h2 {
-      color: #17D860;
-      margin-bottom: 10px;
-    }
-
-    button {
-      background: #17D860;
-      color: black;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      font-weight: bold;
-      margin: 10px;
-    }
-
-    .project-card {
-      background: #222;
-      padding: 20px;
-      margin: 15px 0;
-      border-radius: 12px;
+    .content {
+      flex: 3;
       text-align: left;
     }
 
-    .project-card a {
-      color: #17D860;
+    .sidebar {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    h2 {
+      font-size: 2.3em;
+      margin-bottom: 20px;
+      color: #159e4d;
+    }
+
+    p {
+      margin: 15px 0;
+      font-size: 1.1em;
+      line-height: 1.6em;
+    }
+
+    /* Sidebar info boxes */
+    .box {
+      background: #1a1a1a;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0px 4px 15px rgba(0,0,0,0.3);
+    }
+    .box h3 {
+      margin-bottom: 10px;
+      font-size: 1.2em;
+      color: #159e4d;
+    }
+    .btn {
+      display: inline-block;
+      background: #159e4d;
+      color: white;
+      padding: 10px 18px;
+      margin-top: 10px;
+      border-radius: 8px;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 600;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+    .btn:hover {
+      background: #0f7d3d;
+      transform: translateY(-2px);
     }
 
     footer {
-      padding: 20px;
-      font-size: 0.8em;
+      background: #000;
       color: #aaa;
+      padding: 15px;
+      text-align: center;
+      font-size: 0.9em;
+      margin-top: auto;
+    }
+
+    /* Mobile */
+    @media (max-width: 900px) {
+      section.active {
+        flex-direction: column;
+      }
+      .sidebar {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .box {
+        flex: 1 1 45%;
+      }
     }
   </style>
 </head>
 <body>
-
   <header>
-    <div>pip chell</div>
+    <div class="title">Pip Chell</div>
     <div class="icons">
-      <img src="icon1.png" alt="Info" onclick="showPage('welcome')">
+      <img src="logo.png" alt="Home" onclick="showPage('home')">
+      <img src="icon1.png" alt="About" onclick="showPage('about')">
       <img src="icon2.png" alt="Projects" onclick="showPage('projects')">
-      <img src="icon3.png" alt="About" onclick="showPage('about')">
-      <img src="icon4.png" alt="Contact" onclick="showPage('social')">
+      <img src="icon3.png" alt="Contact" onclick="showPage('contact')">
+      <img src="icon4.png" alt="RPC" onclick="showPage('rpc')">
     </div>
   </header>
 
-  <!-- Welcome -->
-  <section id="welcome" class="active">
-    <h2>Welcome 👋</h2>
-    <p>I’m Pip Chell. I enjoy technology and graphic design. This site shows some of my projects, social links, and things I’m working on.</p>
-    <p>I’m also the creator of RPCgroup, a fictional company I use to practice design and branding.</p>
-    <button onclick="showPage('about')">More About Me</button>
-    <button onclick="showPage('projects')">See My Projects</button>
-  </section>
+  <main>
+    <!-- Home -->
+    <section id="home" class="active">
+      <div class="content">
+        <h2>Welcome 👋</h2>
+        <p>I’m Pip Chell. I enjoy technology and graphic design. On this site you’ll find my projects, social links, and a bit about me.</p>
+        <p>I’m also the creator of RPCgroup — my fictional company that lets me experiment with branding and design.</p>
+      </div>
+      <div class="sidebar">
+        <div class="box">
+          <h3>More About Me</h3>
+          <a class="btn" onclick="showPage('about')">Go</a>
+        </div>
+        <div class="box">
+          <h3>My Projects</h3>
+          <a class="btn" onclick="showPage('projects')">View</a>
+        </div>
+      </div>
+    </section>
 
-  <!-- About -->
-  <section id="about">
-    <h2>About Me 👀</h2>
-    <p>Hello there! I’m Pip, a young person from the UK with a passion for both technology and design. I’m also interested in fire safety and even have a mock fire alarm system at home!</p>
-    <p>This website was built with just HTML, CSS, and a sprinkle of JS. I like keeping things simple and creative.</p>
-    <p>When I’m not coding or designing, you’ll probably find me experimenting with RPCgroup ideas or tinkering with Raspberry Pi projects.</p>
-  </section>
+    <!-- About -->
+    <section id="about">
+      <div class="content">
+        <h2>About Me 👀</h2>
+        <p>Hi there! I’m Pip, a young person living in the UK with a passion for both technology and design. I’m also interested in fire safety and even built a mock fire alarm system at home.</p>
+        <p>I love making projects that mix creativity and function. This website is one of them — built purely with HTML, CSS, and a touch of JS.</p>
+      </div>
+      <div class="sidebar">
+        <div class="box">
+          <h3>GitHub</h3>
+          <a class="btn" href="https://github.com/pipchell" target="_blank">Visit</a>
+        </div>
+      </div>
+    </section>
 
-  <!-- Projects -->
-  <section id="projects">
-    <h2>Projects 💡</h2>
-    <div class="project-card">
-      <h3>pip-web</h3>
-      <p>This website! Built purely with HTML, CSS, and creativity.</p>
-      <a href="#">Visit Site</a>
-    </div>
-    <div class="project-card">
-      <h3>rpc-logo-dvd</h3>
-      <p>A bouncing DVD logo app with a twist.</p>
-      <a href="#">Visit Project</a>
-    </div>
-    <div class="project-card">
-      <h3>christmas-countdown</h3>
-      <p>A festive, customisable Christmas countdown website.</p>
-      <a href="#">Visit Project</a>
-    </div>
-    <div class="project-card">
-      <h3>rpc-forum</h3>
-      <p>A community forum for RPCgroup discussions.</p>
-      <a href="#">Visit Project</a>
-    </div>
-  </section>
+    <!-- Projects -->
+    <section id="projects">
+      <div class="content">
+        <h2>Projects 💡</h2>
+        <p>Here are some of my projects that involve coding and design. Full list is on my GitHub.</p>
+      </div>
+      <div class="sidebar">
+        <div class="box">
+          <h3>pip-web</h3>
+          <a class="btn" href="#">Visit</a>
+        </div>
+        <div class="box">
+          <h3>rpc-logo-dvd</h3>
+          <a class="btn" href="#">Visit</a>
+        </div>
+        <div class="box">
+          <h3>christmas-countdown</h3>
+          <a class="btn" href="#">Visit</a>
+        </div>
+        <div class="box">
+          <h3>rpc-forum</h3>
+          <a class="btn" href="https://forum.rpcgroup.xyz" target="_blank">Visit</a>
+        </div>
+      </div>
+    </section>
 
-  <!-- Social -->
-  <section id="social">
-    <h2>Social 🌍</h2>
-    <p>You can find me and my work here:</p>
-    <p>Email: <a href="mailto:personal@rpcgroup.xyz">personal@rpcgroup.xyz</a></p>
-    <p>GitHub: <a href="https://github.com/pipchell" target="_blank">pipchell</a></p>
-    <p>RPC Forum: <a href="https://forum.rpcgroup.xyz" target="_blank">Visit Forum</a></p>
-  </section>
+    <!-- Contact -->
+    <section id="contact">
+      <div class="content">
+        <h2>Contact Me 🌍</h2>
+        <p>I’d love to hear from you. The best way is via email, but you can also reach me on GitHub or my forum.</p>
+      </div>
+      <div class="sidebar">
+        <div class="box">
+          <h3>Email</h3>
+          <a class="btn" href="mailto:personal@rpcgroup.xyz">Send</a>
+        </div>
+        <div class="box">
+          <h3>GitHub</h3>
+          <a class="btn" href="https://github.com/pipchell" target="_blank">Visit</a>
+        </div>
+        <div class="box">
+          <h3>RPC Forum</h3>
+          <a class="btn" href="https://forum.rpcgroup.xyz" target="_blank">Join</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- RPC -->
+    <section id="rpc">
+      <div class="content">
+        <h2>RPCgroup 🙂</h2>
+        <p>RPCgroup is my fictional company — it’s how I practise branding, design, and community building. While it isn’t a real business, it’s a platform for creative experiments and learning.</p>
+      </div>
+      <div class="sidebar">
+        <div class="box">
+          <h3>Visit Forum</h3>
+          <a class="btn" href="https://forum.rpcgroup.xyz" target="_blank">Go</a>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer>
-    © Pip Chell 2025 - site under construction
+    © Pip Chell 2025 · Built with ❤️
   </footer>
 
   <script>
     function showPage(pageId) {
       document.querySelectorAll("section").forEach(sec => sec.classList.remove("active"));
       document.getElementById(pageId).classList.add("active");
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   </script>
 </body>
