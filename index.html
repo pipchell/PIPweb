@@ -1,276 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pip Chell</title>
-  <link rel="icon" href="logo.png" type="image/png" />
   <style>
-    @font-face {
-      font-family: 'win98';
-      src: url('windows-98.otf') format('opentype');
-    }
-
-    html, body {
+    body {
       margin: 0;
-      padding: 0;
-      font-family: 'win98', monospace;
-      background: #1c1c1c;
+      font-family: Arial, sans-serif;
+      background: #111;
       color: white;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-
-    * {
-      box-sizing: border-box;
-      text-transform: lowercase;
-    }
-
-    a {
-      color: white;
-      text-decoration: none;
-    }
-
-    #topbar {
-      background: #156433;
-      padding: 14px 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 2px outset #000;
-      z-index: 999;
-      height: 50px;
-    }
-
-    #topbar-left {
-      font-size: 20px;
-      font-weight: bold;
-      user-select: none;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 8px;
-    }
-
-    .nav-links a {
-      background: #2a2a2a;
-      border: 2px outset #666;
-      padding: 8px 14px;
-      font-size: 15px;
-    }
-
-    #hamburger {
-      display: none;
-      width: 26px;
-      height: 22px;
-      cursor: pointer;
-      user-select: none;
-      position: relative;
-      image-rendering: pixelated;
-      /* to avoid anti-aliasing on pixel blocks */
-    }
-
-    /* Retro pixel block style hamburger lines */
-    #hamburger span {
-      display: block;
-      width: 22px;
-      height: 6px;
-      background: white;
-      border: 2px outset #000;
-      margin-bottom: 4px;
-      box-sizing: border-box;
-      /* pixelated edges */
-      image-rendering: pixelated;
-      /* keep the blocky style */
-    }
-
-    /* Remove margin from last span */
-    #hamburger span:last-child {
-      margin-bottom: 0;
-    }
-
-    /* Mobile styles */
-    @media (max-width: 600px) {
-      .nav-links {
-        position: absolute;
-        top: 50px;
-        right: 0;
-        background: #156433;
-        flex-direction: column;
-        width: 150px;
-        border: 2px outset #000;
-        display: none; /* Hidden by default */
-      }
-
-      .nav-links.show {
-        display: flex;
-      }
-
-      #hamburger {
-        display: block;
-      }
-    }
-
-    #main {
-      flex: 1;
-      max-width: 800px;
-      margin: auto;
-      padding: 100px 20px 40px;
       text-align: center;
     }
 
-    #main-logo {
-      display: block;
-      margin: 0 auto 20px auto;
-      width: 120px;
-      height: 120px;
-      image-rendering: pixelated;
+    header {
+      background: #17D860;
+      color: #111;
+      padding: 15px;
+      font-weight: bold;
+      font-size: 1.5em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header .icons {
+      display: flex;
+      gap: 15px;
+    }
+
+    header .icons img {
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
     }
 
     section {
       display: none;
-      text-align: left;
-      margin-top: 40px;
+      padding: 30px 20px;
+      max-width: 800px;
+      margin: auto;
     }
 
     section.active {
       display: block;
     }
 
-    section h2 {
-      font-size: 28px;
-      color: #17d860;
-      border-bottom: 2px inset #333;
-      padding-bottom: 6px;
-      margin-bottom: 12px;
+    h2 {
+      color: #17D860;
+      margin-bottom: 10px;
     }
 
-    section p {
-      font-size: 16px;
-      line-height: 1.6;
-      margin: 8px 0;
+    button {
+      background: #17D860;
+      color: black;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      margin: 10px;
     }
 
-    .project, .social {
-      margin-top: 12px;
+    .project-card {
+      background: #222;
+      padding: 20px;
+      margin: 15px 0;
+      border-radius: 12px;
+      text-align: left;
     }
 
-    .project a, .social a {
-      display: inline-block;
-      margin-top: 4px;
-      background: #444;
-      border: 2px outset #888;
-      padding: 4px 10px;
+    .project-card a {
+      color: #17D860;
+      text-decoration: none;
+      font-weight: bold;
     }
 
     footer {
-      text-align: center;
-      font-size: 14px;
-      color: #aaa;
       padding: 20px;
-      border-top: 2px inset #333;
+      font-size: 0.8em;
+      color: #aaa;
     }
   </style>
 </head>
 <body>
 
-  <div id="topbar">
-    <div id="topbar-left">pip chell</div>
-
-    <div id="hamburger" aria-label="Menu" role="button" tabindex="0">
-      <span></span>
-      <span></span>
-      <span></span>
+  <header>
+    <div>pip chell</div>
+    <div class="icons">
+      <img src="icon1.png" alt="Info" onclick="showPage('welcome')">
+      <img src="icon2.png" alt="Projects" onclick="showPage('projects')">
+      <img src="icon3.png" alt="About" onclick="showPage('about')">
+      <img src="icon4.png" alt="Contact" onclick="showPage('social')">
     </div>
+  </header>
 
-    <nav class="nav-links">
-      <a href="#home">home</a>
-      <a href="#about">about</a>
-      <a href="#projects">projects</a>
-      <a href="#socials">socials</a>
-    </nav>
-  </div>
+  <!-- Welcome -->
+  <section id="welcome" class="active">
+    <h2>Welcome 👋</h2>
+    <p>I’m Pip Chell. I enjoy technology and graphic design. This site shows some of my projects, social links, and things I’m working on.</p>
+    <p>I’m also the creator of RPCgroup, a fictional company I use to practice design and branding.</p>
+    <button onclick="showPage('about')">More About Me</button>
+    <button onclick="showPage('projects')">See My Projects</button>
+  </section>
 
-  <div id="main">
-    <section id="home" class="active">
-      <img id="main-logo" src="logo.png" alt="big logo" />
-      <h2>welcome</h2>
-      <p>i'm pip chell — blah blah blah blah blah blah blah blah blah blah blah blah blah.</p>
-    </section>
+  <!-- About -->
+  <section id="about">
+    <h2>About Me 👀</h2>
+    <p>Hello there! I’m Pip, a young person from the UK with a passion for both technology and design. I’m also interested in fire safety and even have a mock fire alarm system at home!</p>
+    <p>This website was built with just HTML, CSS, and a sprinkle of JS. I like keeping things simple and creative.</p>
+    <p>When I’m not coding or designing, you’ll probably find me experimenting with RPCgroup ideas or tinkering with Raspberry Pi projects.</p>
+  </section>
 
-    <section id="about">
-      <h2>about me</h2>
-      <p>blah blah blah blah blah blah blah blah blah blah blah blah blah.</p>
-    </section>
+  <!-- Projects -->
+  <section id="projects">
+    <h2>Projects 💡</h2>
+    <div class="project-card">
+      <h3>pip-web</h3>
+      <p>This website! Built purely with HTML, CSS, and creativity.</p>
+      <a href="#">Visit Site</a>
+    </div>
+    <div class="project-card">
+      <h3>rpc-logo-dvd</h3>
+      <p>A bouncing DVD logo app with a twist.</p>
+      <a href="#">Visit Project</a>
+    </div>
+    <div class="project-card">
+      <h3>christmas-countdown</h3>
+      <p>A festive, customisable Christmas countdown website.</p>
+      <a href="#">Visit Project</a>
+    </div>
+    <div class="project-card">
+      <h3>rpc-forum</h3>
+      <p>A community forum for RPCgroup discussions.</p>
+      <a href="#">Visit Project</a>
+    </div>
+  </section>
 
-    <section id="projects">
-      <h2>projects</h2>
-      <div class="project">
-        <p><strong>project 1</strong> — blah blah blah</p>
-        <a href="#">view</a>
-      </div>
-      <div class="project">
-        <p><strong>project 2</strong> — blah blah blah</p>
-        <a href="#">view</a>
-      </div>
-    </section>
-
-    <section id="socials">
-      <h2>socials</h2>
-      <div class="social">
-        <p>github</p>
-        <a href="#">link</a>
-      </div>
-      <div class="social">
-        <p>email</p>
-        <a href="#">link</a>
-      </div>
-    </section>
-  </div>
+  <!-- Social -->
+  <section id="social">
+    <h2>Social 🌍</h2>
+    <p>You can find me and my work here:</p>
+    <p>Email: <a href="mailto:personal@rpcgroup.xyz">personal@rpcgroup.xyz</a></p>
+    <p>GitHub: <a href="https://github.com/pipchell" target="_blank">pipchell</a></p>
+    <p>RPC Forum: <a href="https://forum.rpcgroup.xyz" target="_blank">Visit Forum</a></p>
+  </section>
 
   <footer>
-    © 2025 pip chell - page under construction
+    © Pip Chell 2025 - site under construction
   </footer>
 
   <script>
-    const links = document.querySelectorAll('.nav-links a');
-    const sections = document.querySelectorAll('section');
-    const hamburger = document.getElementById('hamburger');
-    const navLinks = document.querySelector('.nav-links');
-
-    function showSection(id) {
-      sections.forEach(s => s.classList.remove('active'));
-      const target = document.querySelector(id);
-      if (target) target.classList.add('active');
+    function showPage(pageId) {
+      document.querySelectorAll("section").forEach(sec => sec.classList.remove("active"));
+      document.getElementById(pageId).classList.add("active");
     }
-
-    links.forEach(link => {
-      link.addEventListener('click', e => {
-        e.preventDefault();
-        showSection(link.getAttribute('href'));
-        // close menu on mobile after click
-        if(window.innerWidth <= 600) {
-          navLinks.classList.remove('show');
-        }
-      });
-    });
-
-    hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('show');
-    });
-
-    // Optional: close menu if you click outside nav on mobile
-    document.addEventListener('click', (e) => {
-      if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
-        navLinks.classList.remove('show');
-      }
-    });
-
-    // Show home section on load
-    showSection('#home');
   </script>
-
 </body>
 </html>
